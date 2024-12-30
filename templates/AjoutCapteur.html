@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+    <title>Navigation entre Logements</title>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+    <h1>EcoLogement </h1>
+    </header>
+        <!-- Navigation -->
+    <nav>
+        <a href="/accueil/">Accueil</a>
+    </nav>
+    <h1>Ajouter un Capteur</h1>
+    
+    <form id="capteurForm">
+
+        <label for="id_piece">ID de la pièce :</label>
+        <!-- On affiche le paramètre `id_piece` ici en lecture seule -->
+        <input type="number" id="id_piece" name="id_piece" value="{{ id_piece }}" readonly><br><br>
+
+        <!-- Choix du type de capteur -->
+        <label for="typeCapteur">Type de capteur :</label>
+        <select id="typeCapteur" name="typeCapteur">
+            <option value="1">Température</option>
+            <option value="2">Humidité</option>
+        </select><br/><br/>
+        
+        <!-- Champs cachés -->
+        <input type="hidden" id="refCom" name="refCom" value="0" />
+        <input type="hidden" id="refPiece" name="refPiece" value="0" />
+        <input type="hidden" id="portCom" name="portCom" value="80" />
+        
+        <!-- Bouton pour soumettre -->
+        <button type="button" onclick="ajouterCapteur()">Ajouter le capteur</button>
+    </form>
+
+
+    <script src="/static/javascript/script_Ajoutcapteur1.js"></script>
+</div>
+<!-- Pied de page -->       
+<footer>
+    <p>&copy; 2024 EcoLogement. By Emmanuel Pons.</p>
+</footer>
+</body>
+</html>

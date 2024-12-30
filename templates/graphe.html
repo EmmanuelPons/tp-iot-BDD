@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href = "/static/css/style_graphes.css"/>
+    <title>Navigation entre Logements</title>
+    <!-- Inclure Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <h1>EcoLogement </h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/accueil/">Accueil</a>
+    </nav>
+
+    <!-- Graphique -->
+    <div class="chart-container">
+        <canvas id="timeChart"></canvas>
+    </div>
+
+    <!-- Pied de page -->       
+    <footer>
+        <p>&copy; 2024 EcoLogement. By Emmanuel Pons.</p>
+    </footer>
+
+    <script>
+        
+        const mesures = {{ Mesures | tojson }};
+
+        
+        const labels = mesures.map(mesure => mesure.Date_insertion);
+        const dataValues = mesures.map(mesure => mesure.valeur);
+        
+        const type = mesures.length > 0 ? mesures[0].Type : "Inconnu";
+        const unite = mesures.length > 0 ? mesures[0].Unite : "Inconnue";
+
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label:  `${type} au cours du temps`  ,
+                    data: dataValues,
+                    borderColor: "#007bff",
+                    backgroundColor: "rgba(0, 123, 255, 0.2)",
+                    tension: 0.3,
+                }
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,  
+                maintainAspectRatio: false,  
+                scales: {
+                    x: {
+                        stacked: true,
+                        type: 'category',
+                        title: {
+                            display: true,
+                            text: 'Temps'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                                text: `${type} (${unite})`
+                            }
+                        }
+                    }
+            }
+        };
+
+        // Initialisation du graphique
+        const ctx = document.getElementById('timeChart').getContext('2d');
+        const timeChart = new Chart(ctx, config);
+
+    </script>
+</body>
+</html>

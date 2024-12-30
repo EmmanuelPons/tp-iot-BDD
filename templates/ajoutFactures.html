@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+    <title>Navigation entre Logements</title>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+    <h1>EcoLogement </h1>
+    </header>
+        <!-- Navigation -->
+    <nav>
+        <a href="/accueil/">Accueil</a>
+    </nav>
+    <h1>Ajouter une Facture</h1>
+    <form onsubmit="event.preventDefault(); ajouterFacture();">
+        <label for="typeFacture">Type de Facture:</label><br>
+        <select id="typeFacture" name="typeFacture" required>
+            <option value="ELEC">Électricité</option>
+            <option value="GAZ">Gaz</option>
+            <option value="EAU">Eau</option>
+            <option value="AUTRE">Autre</option>
+        </select><br><br>
+        
+        <label for="DateFacture">Date de la Facture (YYYY-MM-DD):</label><br>
+        <input type="date" id="DateFacture" name="DateFacture" required pattern="\d{4}-\d{2}-\d{2}"><br><br>
+        
+        <label for="montant">Montant:</label><br>
+        <input type="number" id="montant" name="montant" required min="0" step="0.01"><br><br>
+        
+        <label for="valeur_conso">Valeur de Consommation:</label><br>
+        <input type="number" id="valeur_conso" name="valeur_conso" required min="0" step="1"><br><br>
+        
+        <label for="id_logements">ID Logement:</label><br>
+        <input type="text" id="id_logements" name="id_log" value={{id_log}} readonly><br><br>
+
+        <button type="submit">Ajouter Facture</button>
+    </form>
+
+    <script src="/static/javascript/script_facture1.js"></script>
+</div>
+<!-- Pied de page -->       
+<footer>
+    <p>&copy; 2024 EcoLogement. By Emmanuel Pons.</p>
+</footer>
+</body>
+</html>

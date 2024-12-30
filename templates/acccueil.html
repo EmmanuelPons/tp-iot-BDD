@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href = "/static/css/style.css"/>
+    <title>Navigation entre Logements</title>
+
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <h1>EcoLogement</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/accueil/">Accueil</a>
+    </nav>
+    <div class="container">
+        {% for logement in logements %}
+        <a href="/logement/{{ logement.id_log }}">
+            <div class="card"> 
+                <h2>Logement {{ logement.id_log }}</h2>
+                <p><strong>Adresse :</strong> {{ logement.adresse }}, {{ logement.ville }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2024 EcoLogement. By Emmanuel Pons.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style_facture2.css"/>
+    <title>Répartition des Factures</title>
+    <!-- Ajouter la bibliothèque Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-row {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .chart-container {
+            flex: 1;
+            max-width: 30%;
+            padding: 10px;
+            text-align: center;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <h1>EcoLogement</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/accueil/">Accueil</a>
+        <a href="/ajouterfacture/{{ data[0].id_log }}">Ajouter une facture</a>
+    </nav>
+
+<h2 class="centered-title">Répartition des factures</h2>
+
+
+    <div class="chart-row">
+        <div class="chart-container">
+            <h3>Répartition Globale</h3>
+            <canvas id="myPieChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>3 Derniers Mois</h3>
+            <canvas id="myPieChart2"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>2 Dernières Années</h3>
+            <canvas id="myPieChart3"></canvas>
+        </div>
+    </div>
+<h2 class="invisbletitle"> .</h2>   
+    <!-- Script pour générer les diagrammes camemberts -->
+    <script>
+        var ctx1 = document.getElementById('myPieChart').getContext('2d');
+        var ctx2 = document.getElementById('myPieChart2').getContext('2d');
+        var ctx3 = document.getElementById('myPieChart3').getContext('2d');
+
+        // Données dynamiques envoyées par le serveur
+        var data = {{ data | tojson }};  
+
+        // Extraire les labels et les valeurs des factures pour le graphique 1
+        var labels1 = ['Électricité', 'Gaz', 'Eau', 'Autres']; 
+        var values1 = [data[0].ELEC, data[0].GAZ, data[0].EAU, data[0].AUTRE]; 
+
+        // Configuration du graphique 1
+        var myPieChart1 = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: labels1,
+                datasets: [{
+                    label: 'Répartition des Factures',
+                    data: values1,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#90EE90'],
+                    borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#90EE90'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' €';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Extraire les labels et les valeurs des factures pour les 3 derniers mois (graphique 2)
+        var labels2 = ['Électricité', 'Gaz', 'Eau', 'Autres'];
+        var values2 = [data[1].ELECMOIS, data[1].GAZMOIS, data[1].EAUMOIS, data[1].AUTREMOIS];
+
+        var myPieChart2 = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: labels2,
+                datasets: [{
+                    label: 'Factures des 3 derniers mois',
+                    data: values2,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#90EE90'],
+                    borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#90EE90'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' €';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Extraire les labels et les valeurs des factures pour les 2 dernières années (graphique 3)
+        var labels3 = ['Électricité', 'Gaz', 'Eau', 'Autres'];
+        var values3 = [data[2].ELECANNE, data[2].GAZANNE, data[2].EAUANNE, data[2].AUTREANNE];
+
+        var myPieChart3 = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: labels3,
+                datasets: [{
+                    label: 'Factures des 2 dernières années',
+                    data: values3,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#90EE90'],
+                    borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#90EE90'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' €';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Pied de page -->       
+    <footer>
+        <p>&copy; 2024 EcoLogement. By Emmanuel Pons.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows( {{ id|safe }} ) ;
+
+        // Set chart options
+        var options = {'title':'Prix des factures par type:',
+                       'width':800,
+                       'height':450};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href = "/static/css/style.css"/>
+    <title>Navigation entre Logements</title>
+
+  </head>
+
+  <body>
+    <!-- En-tête -->
+      <header>
+        <h1>EcoLogement </h1>
+      </header>
+  
+      <!-- Navigation -->
+      <nav>
+        <a href="/accueil/">Accueil</a>
+        <a href="#">Contact</a>
+        <a href="#">A Propos</a>
+      </nav>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  <!-- Pied de page -->       
+    <footer>
+        <p>&copy; 2024 EcoLogement. By Emmanuel Pons.</p>
+    </footer>
+</body>
+</html>
