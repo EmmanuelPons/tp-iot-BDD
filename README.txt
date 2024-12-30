@@ -1,8 +1,10 @@
 Pour la partie 1 du TP il d'agit des 2 fichiers qui s'appele logement_V0.2.sql & remplissage.py qui vont créer la BDD et remplir la tables.
 
 Pour la partie 2 du TP tous le code se trouve dans le fichier qui s'appele restFullFastApi.py (pour lancer le serveur il faurt utiliser la commande fastapi dev restFullFastApi.py) puis aller à l'adresse http://127.0.0.1:8000/docs/ pour tester les différentes fonctions.
+Pour voir le camenbert il faut aller à l'adresse http://127.0.0.1:8000/Camem/id_log => pour id_log = 1 on a un exemple avec des factures déjà enregistré
+Le code pour l'ESP ce trouve dans le dossier /esp/ pour faire fonctionner ce code il faut adapter le code de l'esp et du fichier restFullFastApi.py => voir plus bas ce qu'il faut adapter.
 
-Pour la partir 3 du TP le code HTML sera dans le dossier template et le code CSS & JavaScript dans le dossier /static/css et /static/javascript
+Pour la partie 3 du TP le code HTML sera dans le dossier template et le code CSS & JavaScript dans le dossier /static/css et /static/javascript
 
 
 -----------------------------------------------------------------------------
