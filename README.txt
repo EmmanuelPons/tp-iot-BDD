@@ -1,3 +1,13 @@
+Pour la partie 1 du TP il d'agit des 2 fichiers qui s'appele logement_V0.2.sql & remplissage.py qui vont créer la BDD et remplir la tables.
+
+Pour la partie 2 du TP tous le code se trouve dans le fichier qui s'appele restFullFastApi.py (pour lancer le serveur il faurt utiliser la commande fastapi dev restFullFastApi.py) puis aller à l'adresse http://127.0.0.1:8000/docs/ pour tester les différentes fonctions.
+
+Pour la partir 3 du TP le code HTML sera dans le dossier template et le code CSS & JavaScript dans le dossier /static/css et /static/javascript
+
+
+-----------------------------------------------------------------------------
+
+
 Pour lancer le serveur sans collecter de data de l'ESP il suffit de lancer la commande suivante :
 -fastapi dev restFullFastApi.py
 
@@ -15,6 +25,3 @@ Une fois le code adapté l'esp va envoyé les données sur le capteur avec l'id 
 
 Sur le site il est possible d'ajouter des factures et des capteurs à la BDD il est cependent impossible d'en supprimer. Il est possible d'ajouter des logements et des pièces uniqument via http://127.0.0.1:8000/docs/
 Le code HTML, Javascript et CSS on été en grande partie généra grâce à ChatGPT
-
-Pour la partie 1 du TP il d'agit des 2 fichiers qui s'appele logement_V0.2.sql & remplissage.py qui vont créer la BDD et remplir la tables.
-
