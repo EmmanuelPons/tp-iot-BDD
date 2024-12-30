@@ -15,3 +15,6 @@ Une fois le code adapté l'esp va envoyé les données sur le capteur avec l'id 
 
 Sur le site il est possible d'ajouter des factures et des capteurs à la BDD il est cependent impossible d'en supprimer. Il est possible d'ajouter des logements et des pièces uniqument via http://127.0.0.1:8000/docs/
 Le code HTML, Javascript et CSS on été en grande partie généra grâce à ChatGPT
+
+Pour la partie 1 du TP il d'agit des 2 fichiers qui s'appele logement_V0.2.sql & remplissage.py qui vont créer la BDD et remplir la tables.
+
